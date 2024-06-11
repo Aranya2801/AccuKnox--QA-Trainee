@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wisecow-app
+spec:
+  tls:
+  - hosts:
+    - wisecow.example.com
+    secretName: wisecow-tls
+  rules:
+  - host: wisecow.example.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: wisecow-app
+          servicePort: 80
